@@ -36,6 +36,9 @@
         <Reference Include="Assembly-CSharp">
           <HintPath>..\..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\SCP Secret Laboratory Dedicated Server\SCPSL_Data\Managed\Assembly-CSharp.dll</HintPath>
         </Reference>
+        <Reference Include="Assembly-CSharp-firstpass">
+          <HintPath>..\..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\SCP Secret Laboratory Dedicated Server\SCPSL_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
+        </Reference>
         <Reference Include="LabApi, Version=1.1.6.1, Culture=neutral, processorArchitecture=Amd64">
           <HintPath>..\packages\Northwood.LabAPI.1.1.6.1\lib\net48\LabApi.dll</HintPath>
         </Reference>

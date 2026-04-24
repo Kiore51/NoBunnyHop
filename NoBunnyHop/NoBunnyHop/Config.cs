@@ -10,7 +10,6 @@ namespace NoBunnyHop
         [Description("Number of jumps the player can complete before being punished.")]
         public int JumpCounter { get; set; } = 3;
         
-        
         [Description("Number of health points the player loses on punishment.")]
         public int LostHp { get; set; } = 10;
         
@@ -19,5 +18,8 @@ namespace NoBunnyHop
         
         [Description("Duration of the broadcast that is sent to the player during a bunny hop.")]
         public ushort BroadcastDuration { get; set; } = 5;
+        
+        [Description("Cooldown to space out the jumps")]
+        public float Cooldown { get; set; } = 3f;
     }
 }

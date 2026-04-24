@@ -3,6 +3,7 @@ using LabApi.Events.Arguments.PlayerEvents;
 using LabApi.Events.CustomHandlers;
 using LabApi.Features.Wrappers;
 using PlayerRoles;
+using MEC;
 
 namespace NoBunnyHop
 {
@@ -25,12 +26,20 @@ namespace NoBunnyHop
             }
             
             _counter[player]++;
-            
-            if (_counter[player] >= Plugin.Instance.Config.JumpCounter)
+
+            Timing.CallDelayed(Plugin.Singleton.Config.Cooldown, () =>
             {
-                ev.Player.Damage(Plugin.Instance.Config.LostHp, "Bunny hop");
+                if (_counter.ContainsKey(player) && _counter[player] > 0)
+                {
+                    _counter[player]--;
+                }
+            });
+            
+            if (_counter[player] >= Plugin.Singleton.Config.JumpCounter)
+            {
+                ev.Player.Damage(Plugin.Singleton.Config.LostHp, "Bunny hop");
                 
-                ev.Player.SendBroadcast(Plugin.Instance.Config.Message, Plugin.Instance.Config.BroadcastDuration);
+                ev.Player.SendBroadcast(Plugin.Singleton.Config.Message, Plugin.Singleton.Config.BroadcastDuration);
                 
                 _counter[player] = 0;
             }
