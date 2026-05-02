@@ -38,8 +38,7 @@ namespace NoBunnyHop
             if (_counter[player] >= Plugin.Singleton.Config.JumpCounter)
             {
                 ev.Player.Damage(Plugin.Singleton.Config.LostHp, "Bunny hop");
-                
-                ev.Player.SendBroadcast(Plugin.Singleton.Config.Message, Plugin.Singleton.Config.BroadcastDuration);
+                ev.Player.SendHint("\n\n\n\n\n\n\n\n\n\n\n" + Plugin.Singleton.Config.HintMessage, Plugin.Singleton.Config.HintMessageDuration);
                 
                 _counter[player] = 0;
             }

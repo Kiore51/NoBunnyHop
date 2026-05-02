@@ -14,10 +14,10 @@ namespace NoBunnyHop
         public int LostHp { get; set; } = 10;
         
         [Description("The message sent to the player during a bunny hop.")]
-        public string Message { get; set; } = "<size=15><b><color=#FF0000>Please, don’t do the Bunny Hop</color></b></size>";
+        public string HintMessage { get; set; } = "<size=18><b><color=#FF0000>Please, don’t do the Bunny Hop</color></b></size>";
         
-        [Description("Duration of the broadcast that is sent to the player during a bunny hop.")]
-        public ushort BroadcastDuration { get; set; } = 5;
+        [Description("Duration of the hint message that is sent to the player during a bunny hop.")]
+        public ushort HintMessageDuration { get; set; } = 5;
         
         [Description("Cooldown to space out the jumps")]
         public float Cooldown { get; set; } = 3f;
