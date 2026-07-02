@@ -10,10 +10,38 @@ namespace NoBunnyHop
     public class EventsHandler : CustomEventsHandler
     {
         private Dictionary<Player, int> _counter = new Dictionary<Player, int>();
-
+        
         public override void OnPlayerJumped(PlayerJumpedEventArgs ev)
         {
-            ev.Player.StaminaRemaining = ev.Player.StaminaRemaining - 0.5f;
+            if (ev.Player.Role == RoleTypeId.Tutorial)
+            {
+                return;
+            }
+            
+            Player player = ev.Player;
+
+            if (!_counter.ContainsKey(player))
+            {
+                _counter[player] = 0;
+            }
+            
+            _counter[player]++;
+
+            Timing.CallDelayed(Plugin.Singleton.Config.Cooldown, () =>
+            {
+                if (_counter.ContainsKey(player) && _counter[player] > 0)
+                {
+                    _counter[player]--;
+                }
+            });
+            
+            if (_counter[player] >= Plugin.Singleton.Config.JumpCounter)
+            {
+                ev.Player.Damage(Plugin.Singleton.Config.LostHp, "Bunny hop");
+                ev.Player.SendHint("\n\n\n\n\n\n\n\n\n\n\n" + Plugin.Singleton.Config.HintMessage, Plugin.Singleton.Config.HintMessageDuration);
+                
+                _counter[player] = 0;
+            }
         }
     }
 }
